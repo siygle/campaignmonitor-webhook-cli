@@ -1,0 +1,20 @@
+{
+  "name": "campaign-monitor-cli",
+  "version": "1.0.0",
+  "description": "",
+  "bin": {
+    "campaign-monitor-cli": "./index.js"
+  },
+  "keywords": [
+    "campaign-monitor",
+    "cli"
+  ],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "standard": "^7.1.2"
+  },
+  "dependencies": {
+    "yargs": "^5.0.0"
+  }
+}
