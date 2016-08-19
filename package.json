@@ -17,5 +17,9 @@
   "dependencies": {
     "request": "^2.74.0",
     "yargs": "^5.0.0"
+  },
+  "packageVars": {
+    "API": "https://api.createsend.com/api/v3.1/",
+    "CONF": ".campaignmonitor-webook-cli"
   }
 }

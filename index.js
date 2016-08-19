@@ -3,7 +3,6 @@
 'use strict'
 
 const fs = require('fs')
-const os = require('os')
 const path = require('path')
 const readline = require('readline')
 const rl = readline.createInterface({
@@ -20,7 +19,7 @@ const SUPPORT_TYPE = [
   'create-list-webhook',
   'delete-list-webhook'
 ]
-const CONF_PATH = path.join(os.homedir(), '.campaignmonitor-webook-cli')
+const CONF_PATH = handler.CONF_PATH()
 
 checkSetting()
 .then(() => {
@@ -36,13 +35,17 @@ checkSetting()
 
   switch (argv.type) {
     case 'auth':
-      handler.updateApiToken(argv._[0], handleOutput)
+    console.log(argv._, argv._.length)
+      if (argv._.length < 1) {
+        handleOutput(new Error('Missing api token'))
+      } else {
+        handler.updateApiToken(argv._[0], handleOutput)
+      }
       break
     default:
       process.exit(1)
   }
 }).catch((err) => {
-  console.log(err)
   rl.question('Please input your campaign monitor API TOKEN:', (token) => {
     fs.writeFile(CONF_PATH, token, (err) => {
       if (err) {
@@ -60,18 +63,19 @@ function checkSetting () {
   return new Promise((resolve, reject) => {
     fs.stat(CONF_PATH, (err, stat) => {
       return (err)
-      ? reject('Please run login to setup api token first')
-      : resolve('pass')
+       ? reject('Please run login to setup api token first')
+       : resolve(stat)
     })
   })
 }
 
 function handleOutput (err, result) {
+  console.log(err, result)
   if (err) {
-    process.stdout.write(err)
+    console.error(err)
     process.exit(1)
   } else {
-    process.stdout.write(result)
+    console.log(result)
     process.exit(0)
   }
 }
