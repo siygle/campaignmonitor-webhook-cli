@@ -42,10 +42,14 @@ checkSetting()
         handler.updateApiToken(argv._[0], handleOutput)
       }
       break
+    case 'get-client':
+      handler.getClients(handleOutput)
+      break
     default:
       process.exit(1)
   }
 }).catch((err) => {
+  console.log(err)
   rl.question('Please input your campaign monitor API TOKEN:', (token) => {
     fs.writeFile(CONF_PATH, token, (err) => {
       if (err) {
@@ -62,9 +66,15 @@ checkSetting()
 function checkSetting () {
   return new Promise((resolve, reject) => {
     fs.stat(CONF_PATH, (err, stat) => {
-      return (err)
-       ? reject('Please run login to setup api token first')
-       : resolve(stat)
+      if (err) return reject('Please run login to setup api token first')
+
+      fs.readFile(CONF_PATH, (err, result) => {
+        if (err) return reject(err)
+
+        let token = result.toString('utf8')
+        handler.setAuth(token)
+        return resolve(token)
+      })
     })
   })
 }
