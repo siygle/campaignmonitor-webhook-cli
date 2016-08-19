@@ -1,9 +1,9 @@
 {
-  "name": "campaign-monitor-cli",
+  "name": "campaignmonitor-webook-cli",
   "version": "1.0.0",
-  "description": "",
+  "description": "A simple tool which help you manage webhook on campaign monitor easily",
   "bin": {
-    "campaign-monitor-cli": "./index.js"
+    "campaignmonitor-webook-cli": "./index.js"
   },
   "keywords": [
     "campaign-monitor",
@@ -15,6 +15,7 @@
     "standard": "^7.1.2"
   },
   "dependencies": {
+    "request": "^2.74.0",
     "yargs": "^5.0.0"
   }
 }
