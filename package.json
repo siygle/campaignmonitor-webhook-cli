@@ -9,12 +9,16 @@
     "campaign-monitor",
     "cli"
   ],
-  "author": "",
-  "license": "ISC",
+  "author": "Ferrari Lee <shiyung@gmail.com>",
+  "engine": {
+    "node": "^4.0.0"
+  },
   "devDependencies": {
     "standard": "^7.1.2"
   },
   "dependencies": {
+    "debug": "^2.2.0",
+    "lodash": "^4.15.0",
     "request": "^2.74.0",
     "yargs": "^5.0.0"
   },
