@@ -16,7 +16,8 @@ const SUPPORT_TYPE = [
   'show-list-info',
   'get-list-webhook',
   'create-list-webhook',
-  'delete-list-webhook'
+  'delete-list-webhook',
+  'test-list-webhook'
 ]
 const CampaignMonitorHandler = require('./lib/handler.js').CampaignMonitorHandler
 const CONF_PATH = require('./lib/handler.js').GetConf()
@@ -66,6 +67,10 @@ checkSetting()
     case 'delete-list-webhook':
       // -t get-list-webhook listID webhookID
       campaignMonitor.deleteListWebhook(argv._[0], argv._[1], handleOutput)
+      break
+    case 'test-list-webhook':
+      // -t test-list-webhook listID webhookID
+      campaignMonitor.testListWebhook(argv._[0], argv._[1], handleOutput)
       break
     default:
       process.exit(1)
