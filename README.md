@@ -30,4 +30,4 @@ You will ask to input apikey at the first time, and can use `campaignmonitor-web
 `campaignmonitor-webook-cli -t delete-list-webhook listID webhookID`
 
 [Test a webhook](https://www.campaignmonitor.com/api/lists/#testing_a_webhook)  
-`campaignmonitor-webook-cli -t delete-list-webhook listID webhookID`
+`campaignmonitor-webook-cli -t test-list-webhook listID webhookID`
